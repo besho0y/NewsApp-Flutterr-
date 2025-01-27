@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:newsapp/cubit/maincubit.dart';
 import 'package:newsapp/layouts/cubit/cubit.dart';
 import 'package:newsapp/layouts/cubit/state.dart';
 
@@ -26,7 +27,9 @@ class Newslayout extends StatelessWidget {
                   icon: Icon(Icons.search),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    MainCubit.get(context).changemode();
+                  },
                   icon: Icon(Icons.brightness_4_outlined),
                 ),
               ],
@@ -39,7 +42,7 @@ class Newslayout extends StatelessWidget {
               },
             ),
             body: ConditionalBuilder(
-              condition: state is !NewsLoadingState,
+              condition: state is! NewsLoadingState,
               builder: (context) => cubit.screens[cubit.currentIndex],
               fallback: (context) => Center(
                 child: CircularProgressIndicator(),
