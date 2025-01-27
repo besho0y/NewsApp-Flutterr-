@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newsapp/layouts/newslayout.dart';
 import 'package:newsapp/network/remote/diohelper.dart';
 import 'package:newsapp/shared/blocobserver.dart';
+import 'package:newsapp/shared/constants.dart';
 
 void main() {
   Diohelper.init();
@@ -26,23 +27,45 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+              scaffoldBackgroundColor: Colors.white,
+              bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: Colors.blue,
+                unselectedItemColor: Colors.grey,
+                backgroundColor: Colors.white,
+              ),
+              appBarTheme: AppBarTheme(
+                titleTextStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24.sp,
+                ),
+                backgroundColor: Colors.blue,
+                iconTheme: IconThemeData(
+                  color: Colors.white,
+                ),
+              ),
+              textTheme: TextTheme(titleMedium: TextStyle(color: Colors.white))),
+          darkTheme: ThemeData(
               scaffoldBackgroundColor: Colors.grey[900],
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                 type: BottomNavigationBarType.fixed,
-                selectedItemColor: Colors.yellow[800],
+                selectedItemColor: myyellow,
                 unselectedItemColor: Colors.grey,
                 backgroundColor: Colors.black,
               ),
               appBarTheme: AppBarTheme(
                 titleTextStyle: TextStyle(
-                  color: Colors.yellow[800],
+                  color: myyellow,
                   fontSize: 24.sp,
                 ),
                 backgroundColor: Colors.black,
                 iconTheme: IconThemeData(
-                  color: Colors.yellow[800],
+                  color: myyellow,
                 ),
-              )),
+              ),
+               textTheme: TextTheme(titleMedium: TextStyle(color: myyellow))
+              ),
+          themeMode: ThemeMode.light,
           home: Newslayout(),
         );
       },

@@ -25,6 +25,10 @@ class Newslayout extends StatelessWidget {
                   onPressed: () {},
                   icon: Icon(Icons.search),
                 ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.brightness_4_outlined),
+                ),
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(
