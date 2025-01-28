@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsapp/layouts/cubit/state.dart';
 import 'package:newsapp/moduls/business/businessScreen.dart';
 import 'package:newsapp/moduls/sceince/sceinceScreen.dart';
-import 'package:newsapp/moduls/settings/settingsScreen.dart';
 import 'package:newsapp/moduls/sports/sportsScreen.dart';
 import 'package:newsapp/network/remote/diohelper.dart';
 import 'package:newsapp/shared/constants.dart';
@@ -94,4 +93,22 @@ class NewsCubit extends Cubit<Newsstate> {
       emit(NewsGetScienceDataSuccessState());
     }
   }
+  List search = [];
+
+  void getsearchedata( {required String value}) {
+     emit(NewsGetSearchDataLoadingState());
+      Diohelper.getdata(
+              url: "v2/everything",
+              query: { "q": value, "apikey": apikey})
+          .then((value) {
+        search = value.data["articles"];
+        emit(NewsGetSearchDataSuccessState());
+      }).catchError((error) {
+        debugPrint(error);
+        emit(NewsGetSearchDataErrorState(error.toString()));
+      });
+    
+    
+  }
+
 }

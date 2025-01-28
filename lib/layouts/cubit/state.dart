@@ -30,4 +30,13 @@ class NewsGetScienceDataErrorState extends Newsstate {
   late String error;
 
   NewsGetScienceDataErrorState(this.error);
+ 
+}
+class NewsGetSearchDataLoadingState extends Newsstate {}
+class NewsGetSearchDataSuccessState extends Newsstate {}
+
+class NewsGetSearchDataErrorState extends Newsstate {
+  late String error;
+
+  NewsGetSearchDataErrorState(this.error);
 }
