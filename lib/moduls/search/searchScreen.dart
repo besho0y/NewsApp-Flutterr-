@@ -25,9 +25,8 @@ class Searchscreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(20.w),
                 child: TextFormField(
-                  cursorColor: MainCubit.get(context).isdark
-                            ? Colors.black
-                            : myyellow ,
+                  cursorColor:
+                      MainCubit.get(context).isdark ? Colors.black : myyellow,
                   style: TextStyle(
                       color: MainCubit.get(context).isdark
                           ? Colors.black
@@ -83,10 +82,12 @@ class Searchscreen extends StatelessWidget {
                     }
                     return null;
                   },
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    NewsCubit.get(context).getsearchedata(value: value);
+                  },
                 ),
               ),
-              Expanded(child: articlebuilder(list))
+              Expanded(child: articlebuilder(list, issearch: true))
             ],
           ),
         );

@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                     textTheme:
-                        TextTheme(titleMedium: TextStyle(color: myyellow))),
+                        TextTheme(titleMedium: TextStyle(color: Colors.white))),
                 themeMode: CachHelper.getdata(key: "isdark")
                     ? ThemeMode.light
                     : ThemeMode.dark,
